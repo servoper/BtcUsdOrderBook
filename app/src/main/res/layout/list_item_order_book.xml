@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="orderBook"
+            type="com.swissborg.btcusdorderbook.model.OrderBook" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_default">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@{orderBook.isPositive ? @android:color/black : @android:color/holo_red_light}"
+            android:text="@{orderBook.isPositive ? `` + orderBook.btcPrice : `` + orderBook.usdPrice}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textColor="@{orderBook.isPositive ? @android:color/holo_green_dark : @android:color/black}"
+            android:text="@{orderBook.isPositive ? `` + orderBook.usdPrice : `` + orderBook.btcPrice}" />
+    </RelativeLayout>
+</layout>

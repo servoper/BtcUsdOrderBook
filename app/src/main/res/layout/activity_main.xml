@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.swissborg.btcusdorderbook.viewmodel.TickerViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ticker_container_height"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="@{`LAST PRICE: ` + viewModel.ticker.lastPrice}"
+                android:textSize="@dimen/text_size_large"
+                tools:text="LAST PRICE: 3.4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="@{`VOLUME: ` + viewModel.ticker.volume}"
+                android:textSize="@dimen/text_size_large"
+                tools:text="VOLUME: 3.4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="@{`CHANGE: ` + viewModel.ticker.dailyChange}"
+                android:textSize="@dimen/text_size_large"
+                tools:text="CHANGE: 3.4" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_default"
+                    android:text="@{`VOLUME: ` + viewModel.ticker.low}"
+                    android:textSize="@dimen/text_size_large"
+                    tools:text="VOLUME: 3.4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{`HIGH: ` + viewModel.ticker.high}"
+                    android:textSize="@dimen/text_size_large"
+                    tools:text="HIGHT: 3.4" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="@string/order_books"
+            android:paddingTop="@dimen/padding_x_small"
+            android:paddingBottom="@dimen/padding_x_small"
+            android:paddingStart="@dimen/padding_default"
+            android:paddingEnd="@dimen/padding_default"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size" />
+
+        <FrameLayout
+            android:id="@+id/order_books_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

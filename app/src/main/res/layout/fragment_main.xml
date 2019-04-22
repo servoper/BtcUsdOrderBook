@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.swissborg.btcusdorderbook.viewmodel.OrderBooksViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bid_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:context="com.swissborg.btcusdorderbook.ui.activity.MainActivity"
+            tools:listitem="@layout/list_item_order_book" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ask_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:context="com.swissborg.btcusdorderbook.ui.activity.MainActivity"
+            tools:listitem="@layout/list_item_order_book" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
