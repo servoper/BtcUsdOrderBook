@@ -9,7 +9,7 @@ import com.swissborg.btcusdorderbook.databinding.ActivityMainBinding
 import com.swissborg.btcusdorderbook.ui.fragment.MainFragment
 import com.swissborg.btcusdorderbook.viewmodel.TickerViewModel
 
-open class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     lateinit var mViewModel: TickerViewModel
 
@@ -27,6 +27,7 @@ open class MainActivity : AppCompatActivity() {
         }
 
         mViewModel = ViewModelProviders.of(this)[TickerViewModel::class.java]
+
         binding.viewModel = mViewModel
     }
 

@@ -7,8 +7,9 @@ import com.google.gson.Gson
 import com.swissborg.btcusdorderbook.model.Ticker
 import okhttp3.*
 import okio.ByteString
+import java.lang.Exception
 
-private const val MESSAGE_SUBSCRIBE_BTCUSD_TICKER =
+const val MESSAGE_SUBSCRIBE_BTCUSD_TICKER =
     "{\"event\":\"subscribe\", \"channel\":\"ticker\", \"pair\":\"BTCUSD\"}"
 
 class TickerRepository {
@@ -35,7 +36,7 @@ class TickerRepository {
         mWebSocket = null
     }
 
-    fun getTicker(): LiveData<Ticker> {
+    fun getTicker(): MutableLiveData<Ticker> {
         return mTickerObservable
     }
 
@@ -46,16 +47,7 @@ class TickerRepository {
             }
 
             override fun onMessage(webSocket: WebSocket?, text: String?) {
-                if (!TextUtils.isEmpty(text)) {
-                    try {
-                        val tickerArray = Gson().fromJson(text, Array<Float>::class.java)
-                        if (tickerArray.size == 11) {
-                            mTickerObservable.postValue(Ticker(tickerArray))
-                        }
-                    } catch (e: Exception) {
-
-                    }
-                }
+                onMessage(text)
             }
 
             override fun onMessage(webSocket: WebSocket?, bytes: ByteString) {
@@ -64,6 +56,19 @@ class TickerRepository {
             override fun onClosing(webSocket: WebSocket, code: Int, reason: String?) {
                 webSocket.close(1000, null)
                 webSocket.cancel()
+            }
+        }
+    }
+
+    private fun onMessage(text: String?) {
+        if (!TextUtils.isEmpty(text)) {
+            try {
+                val tickerArray = Gson().fromJson(text, Array<Float>::class.java)
+                if (tickerArray.size == 11) {
+                    mTickerObservable.postValue(Ticker(tickerArray))
+                }
+            } catch (e: Exception) {
+
             }
         }
     }

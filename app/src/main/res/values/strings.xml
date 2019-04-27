@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Btc Usd Order Book</string>
     <string name="order_books">Order Books</string>
+
+    <string name="last_price">LAST PRICE: %s</string>
+    <string name="volume">VOLUME: %s</string>
+    <string name="change">CHANGE: %s</string>
+    <string name="low">LOW: %s</string>
+    <string name="high">LOW: %s</string>
 </resources>
