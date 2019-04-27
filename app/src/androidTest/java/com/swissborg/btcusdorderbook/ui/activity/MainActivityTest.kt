@@ -23,8 +23,7 @@ class MainActivityTest {
     var activityActivityTestRule = ActivityTestRule<MainActivity>(MainActivity::class.java)
 
     @Test
-    fun testTicker() {
-
+    fun testTickerDatabinding() {
         val dailyChange = 0.5f
         val lastPrice = 0.6f
         val volume = 0.7f
